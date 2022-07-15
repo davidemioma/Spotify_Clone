@@ -24,13 +24,11 @@ const Player = () => {
 
   const currentTrack = useSelector((state) => state.player.currentTrack);
 
-  const { uri } = currentTrack;
-
   useEffect(() => {
-    if (uri) {
+    if (currentTrack.uri) {
       dispatch(setPlayState(true));
     }
-  }, [uri]);
+  }, [currentTrack.uri]);
 
   return (
     <>
@@ -55,7 +53,7 @@ const Player = () => {
           showSaveIcon
           callback={(state) => setPlayState(state.isPlaying)}
           play={play}
-          uris={uri ? [uri] : []}
+          uris={currentTrack?.uri ? [currentTrack?.uri] : []}
           magnifySliderOnHover={true}
           autoPlay={true}
         />
