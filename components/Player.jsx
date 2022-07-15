@@ -35,29 +35,31 @@ const Player = () => {
   return (
     <>
       {/* Premium Spotify Users */}
-      <SpotifyPlayer
-        styles={{
-          activeColor: "#fff",
-          bgColor: "#181818",
-          color: "#fff",
-          loaderColor: "#fff",
-          sliderColor: "#1cb954",
-          trackArtistColor: "#ccc",
-          trackNameColor: "#fff",
-          height: "70px",
-          sliderTrackColor: "#535353",
-          sliderTrackBorderRadius: "4px",
-          sliderHandleColor: "#fff",
-          errorColor: "#fff",
-        }}
-        token={session?.user?.accessToken}
-        showSaveIcon
-        callback={(state) => setPlayState(state.isPlaying)}
-        play={play}
-        uris={uri ? [uri] : []}
-        magnifySliderOnHover={true}
-        autoPlay={true}
-      />
+      {currentTrack && (
+        <SpotifyPlayer
+          styles={{
+            activeColor: "#fff",
+            bgColor: "#181818",
+            color: "#fff",
+            loaderColor: "#fff",
+            sliderColor: "#1cb954",
+            trackArtistColor: "#ccc",
+            trackNameColor: "#fff",
+            height: "70px",
+            sliderTrackColor: "#535353",
+            sliderTrackBorderRadius: "4px",
+            sliderHandleColor: "#fff",
+            errorColor: "#fff",
+          }}
+          token={session?.user?.accessToken}
+          showSaveIcon
+          callback={(state) => setPlayState(state.isPlaying)}
+          play={play}
+          uris={uri ? [uri] : []}
+          magnifySliderOnHover={true}
+          autoPlay={true}
+        />
+      )}
 
       {/* Free Spotify Users but can't play songs */}
       {/* <div className="bg-[#181818] flex items-center justify-between space-x-20 md:space-x-0 px-5 py-2.5 rounded-t-2xl relative  overflow-x-scroll md:overflow-x-hidden scrollbar-hide">
